@@ -1,0 +1,57 @@
+@model ASP.NET_Core.Models.Escuela
+
+@{
+    ViewData["Title"] = "Borrar";
+}
+
+<h2>Borrar</h2>
+
+<h3>Está seguro de borrar esto?</h3>
+<div>
+    <h4>Escuela</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoEscuela)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TipoEscuela)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pais)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pais)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ciudad)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ciudad)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Dirección)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dirección)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AñoDeCreación)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AñoDeCreación)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Borrar" class="btn btn-default" /> |
+        <a asp-action="Index">Atrás</a>
+    </form>
+</div>

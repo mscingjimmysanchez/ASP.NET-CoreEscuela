@@ -1,0 +1,43 @@
+@model ASP.NET_Core.Models.Evaluación
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Evaluación</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Asignatura)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Asignatura.Nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Alumno)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Alumno.Nombre)
+        </dd>        
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nota)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nota)
+        </dd>
+        
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
+    <a asp-action="Index">Atrás</a>
+</div>
