@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using ASP.NET_Core.Models;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using ASP.NET_Core.Models;
 
 namespace ASP.NET_Core
 {
@@ -16,16 +16,17 @@ namespace ASP.NET_Core
     {
         public static void Main(string[] args)
         {
+            //CreateWebHostBuilder(args).Build().Run();
             var host = CreateWebHostBuilder(args).Build();
-            using (var scope = host.Services.CreateScope())
+
+            using(var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                try
+                try 
                 {
                     var context = services.GetRequiredService<EscuelaContext>();
                     context.Database.EnsureCreated();
-                }
-                catch (Exception ex)
+                }catch (Exception ex)
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex, "An error occurred creating the DB.");

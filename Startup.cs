@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ASP.NET_Core.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -11,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ASP.NET_Core.Models;
 
 namespace ASP.NET_Core
 {
@@ -35,14 +35,20 @@ namespace ASP.NET_Core
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddMvc().AddViewOptions(options => options.HtmlHelperOptions.ClientValidationEnabled = true);
+
             // services.AddDbContext<EscuelaContext>(
-            //     options => options.UseInMemoryDatabase(databaseName:"testDB")
+            //     options => options.UseInMemoryDatabase(databaseName: "testDB")
             // );
-            string connString = ConfigurationExtensions.GetConnectionString(this.Configuration, "DefaultConnectionString");
+
+            string connString = ConfigurationExtensions
+                	                .GetConnectionString(this.Configuration, 
+                                    "DefaultConnectionString" );
+
             services.AddDbContext<EscuelaContext>(
-                options => options.UseSqlServer(connString)
-            );
+                    options => options.UseSqlServer(connString)
+                );
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
